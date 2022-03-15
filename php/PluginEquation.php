@@ -10,12 +10,7 @@ dataBase($a, $b, $c, $result);
 function equation($a, $b, $c): array
 {
     if ($a == 0) {
-        $message = 'lol';
-        ?>
-        <script>
-            alert(<?php header('Location: /');?>);
-        </script>
-        <?php
+        headerAlert();
         die;
     }
     if ($b == 0) {
@@ -45,14 +40,12 @@ function equation($a, $b, $c): array
     return array($x1, $x2);
 }
 
-echo "<h3> $a * x<sup>2</sup> $b  * x + $c  = 0</h3>";
-echo "<p>Корни уравнения :</p>";
-echo "<p>X<sub>1</sub> = $result[0] </p> ";
-echo "<p>X<sub>2</sub> = $result[1]</p>";
-
+function headerAlert(){
+    ?><script>alert('Коэффициент при первом слагаемом уравнения не может быть равным нулю измените его и попробуйте снова.')</script><?php
+}
 
 function dataBase($a, $b, $c, $result){
-    require '../config/ConnectDatabase.php';
+    require_once '../config/ConnectDatabase.php';
     $sqlCreateTable = "CREATE TABLE `data_values` ( 
     `id` INT(11) NOT NULL AUTO_INCREMENT ,
     `a` FLOAT(50) NOT NULL ,
@@ -67,6 +60,14 @@ function dataBase($a, $b, $c, $result){
     mysqli_query($connect,$sqlCreateTable);
     mysqli_query($connect, $sqlInsertEquation);
 }
+
+
+echo "<h3> $a * x<sup>2</sup> $b  * x + $c  = 0</h3>";
+echo "<p>Корни уравнения :</p>";
+echo "<p>X<sub>1</sub> = $result[0] </p> ";
+echo "<p>X<sub>2</sub> = $result[1]</p>";
+
+
 
 
 

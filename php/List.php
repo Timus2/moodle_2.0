@@ -9,13 +9,11 @@ $values = mysqli_fetch_all($values);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/table.css">
     <meta charset="UTF-8">
     <title>История</title>
 </head>
 <body>
-<div class="container">
     <table class="table">
         <tr>
             <th>Номер</th>
@@ -30,18 +28,18 @@ $values = mysqli_fetch_all($values);
         foreach ($values as $item) {
             ?>
             <tr>
-                <td><?= $item[0] ?></td>
+                <th><?= $item[0] ?></th>
                 <td><?= $item[1] ?></td>
                 <td><?= $item[2] ?></td>
                 <td><?= $item[3] ?></td>
-                <td><?= $item[4] ?></td>
-                <td><?= $item[5] ?></td>
+                <th><?= $item[4] ?></th>
+                <th><?= $item[5] ?></th>
                 <td><?= $item[6] ?></td>
             </tr>
             <?php
         }
         ?>
     </table>
-</div>
+
 </body>
 </html>
